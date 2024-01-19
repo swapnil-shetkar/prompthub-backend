@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(cors());
 
 //routes
-app.use('/api',authRoutes);
+app.use('/auth',authRoutes);
 app.use("/user", userRoutes);
 app.use("/category", categoryRoutes);
 app.use("/product", productRoutes);

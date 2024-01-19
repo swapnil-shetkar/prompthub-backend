@@ -15,6 +15,7 @@ const {
     listRelated,
     listCategories,
     listBySearch,
+    listSearch,
 } = require("../controllers/productController");
 const { authenticateToken, isAuth, isAdmin } = require("../controllers/authController");
 const { userById } = require("../controllers/userController");
@@ -33,6 +34,7 @@ router.delete("/delete/:productId/:userId", authenticateToken, isAuth, isAdmin, 
 router.put("/update/:productId/:userId", authenticateToken, isAuth, isAdmin, uploader.single("file"), update);
 
 router.get("/list", list);
+router.get("/search", listSearch);
 router.get("/related/:productId", listRelated);
 router.get("/categories", listCategories);
 router.post("/by/search", listBySearch);

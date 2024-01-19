@@ -289,3 +289,35 @@ exports.listBySearch = async (req, res) => {
     });
   }
 };
+
+exports.listSearch = async (req, res) => {
+  try {
+    // Create query object to hold search value and category value
+    const query = {};
+
+    // Assign search value to query.name
+    if (req.query.search) {
+      query.name = { $regex: req.query.search, $options: "i" };
+
+      // Assign category value to query.category
+      if (req.query.category && req.query.category !== "All") {
+        query.category = req.query.category;
+      }
+
+      // Find the product based on the query object with 2 properties: search and category
+      const products = await Product.find(query).populate("category").exec();
+
+      res.json(products);
+    } else {
+      // If no search query is provided, return all products
+      const products = await Product.find().populate("category").exec();
+
+      res.json(products);
+    }
+  } catch (err) {
+    return res.status(400).json({
+      error: errorHandler(err),
+    });
+  }
+};
+
