@@ -321,3 +321,27 @@ exports.listSearch = async (req, res) => {
   }
 };
 
+// exports.decreaseQuantity = async (req, res, next) => {
+//   try {
+//       const bulkOps = req.body.order.products.map(item => ({
+//           updateOne: {
+//               filter: { _id: item._id },
+//               update: { $inc: { quantity: -item.count, sold: +item.count } },
+//           },
+//       }));
+
+//       const result = await Product.bulkWrite(bulkOps, {});
+
+//       if (result && result.nModified !== bulkOps.length) {
+//           return res.status(400).json({
+//               error: "Could not update product",
+//           });
+//       }
+
+//       next();
+//   } catch (error) {
+//       res.status(400).json({
+//           error: "Could not update product",
+//       });
+//   }
+// };

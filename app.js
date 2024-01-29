@@ -11,6 +11,8 @@ const authRoutes = require('./routes/authRoutes')
 const userRoutes = require("./routes/userRoute.JS");
 const categoryRoutes = require("./routes/categoryRoutes.JS");
 const productRoutes = require("./routes/productRoutes.JS");
+const braintreeRoutes = require("./routes/braintreeRoutes.JS");
+const orderRoutes = require("./routes/ordersRoutes");
 //app
 const app = express();
 //db
@@ -28,6 +30,8 @@ app.use('/auth',authRoutes);
 app.use("/user", userRoutes);
 app.use("/category", categoryRoutes);
 app.use("/product", productRoutes);
+app.use("/braintree", braintreeRoutes);
+app.use("/order", orderRoutes);
 
 const port=process.env.PORT || 8000;
 app.listen(port, () =>{
