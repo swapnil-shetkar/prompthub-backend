@@ -1,4 +1,6 @@
+const { errorHandler } = require("../helpers/dbErrorHandler");
 const User = require("../models/user");
+const { Order, CartItem } = require("../models/order");
 
 exports.userById = (req, res, next, id) => {
     User.findById(id)
@@ -82,3 +84,20 @@ exports.addOrderToUserHistory = async (req, res, next) => {
         });
     }
 };
+
+exports.purchaseHistory = async (req, res) => {
+    try {
+        const orders = await Order.find({ user: req.profile._id })
+            .populate("user", "_id name")
+            .sort("-created")
+            .exec();
+
+        res.json(orders);
+    } catch (error) {
+        res.status(400).json({
+            error: error.message || "Error fetching purchase history"
+        });
+    }
+};
+
+

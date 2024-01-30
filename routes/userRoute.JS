@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { authenticateToken, isAuth, isAdmin } = require("../controllers/authController");
-const { userById, read, update } = require("../controllers/userController");
+const { userById, read, update, purchaseHistory } = require("../controllers/userController");
 
 router.get("/secret/:userId", authenticateToken, isAuth, isAdmin, (req, res) => {
     res.json({
@@ -10,6 +10,7 @@ router.get("/secret/:userId", authenticateToken, isAuth, isAdmin, (req, res) => 
 });
 router.get("/profile/:userId", authenticateToken, isAuth, read);
 router.put("/profile/:userId", authenticateToken, isAuth, update);
+router.get("/orders/by/user/:userId", authenticateToken, isAuth, purchaseHistory);
 
 router.param("userId", userById);
 
