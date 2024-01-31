@@ -126,44 +126,15 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) => {
   try {
-    // Get the product from the request object
     const product = req.product;
-
-    // Destructure data from the request body
     const { name, description, price, category, shipping, quantity } = req.body;
-
-    // Check for null or undefined values in required fields
-    if (
-      !name ||
-      !description ||
-      !price ||
-      !category ||
-      shipping == null ||
-      quantity == null
-    ) {
-      return res.status(400).json({
-        success: false,
-        message: "All fields are required",
-      });
-    }
-
-    // Update the product properties
-    product.name = name;
-    product.description = description;
-    product.price = price;
-    product.category = category;
-    product.shipping = shipping;
-    product.quantity = quantity;
 
     // Check if a file is provided
     if (req.file && req.file.path) {
-      // Assuming the photo data is stored as a file path in req.file.path
       const photoData = req.file.path;
 
-      // Upload the file to Cloudinary and get the result
       const cloudinaryResult = await uploadFile(photoData);
 
-      // Check for null or undefined result
       if (!cloudinaryResult) {
         return res.status(500).json({
           success: false,
@@ -176,7 +147,34 @@ exports.update = async (req, res) => {
         data: cloudinaryResult.secure_url,
         contentType: cloudinaryResult.format,
       };
+
+      // Save the updated product to the database
+      const updatedProduct = await product.save();
+
+      return res.json({
+        success: true,
+        message: "Product photo updated successfully",
+        data: updatedProduct,
+      });
     }
+
+    // Check if at least one other field is provided for updating
+    if (![name, description, price, category, shipping, quantity].some(field => field !== undefined)) {
+      return res.status(400).json({
+        success: false,
+        message: "At least one field is required for update (excluding file)",
+      });
+    }
+
+    // Update the product properties if the fields are provided
+    Object.assign(product, {
+      name: name || product.name,
+      description: description || product.description,
+      price: price || product.price,
+      category: category || product.category,
+      shipping: shipping !== undefined ? shipping : product.shipping,
+      quantity: quantity !== undefined ? quantity : product.quantity,
+    });
 
     // Save the updated product to the database
     const updatedProduct = await product.save();
@@ -195,6 +193,8 @@ exports.update = async (req, res) => {
     });
   }
 };
+
+
 
 exports.list = async (req, res) => {
   try {
