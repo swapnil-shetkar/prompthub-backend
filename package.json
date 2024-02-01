@@ -4,9 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
-  }
-  ,
+    "start": "NODE_ENV=production node app.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
