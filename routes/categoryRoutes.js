@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const {create, categoryId, read, update, remove, list} = require("../controllers/categoryController");
-const { authenticateToken, isAuth, isAdmin } = require("../controllers/authController");
-const { userById } = require("../controllers/userController");
+const {create, categoryId, read, update, remove, list} = require("../controllers/categorycontroller");
+const { authenticateToken, isAuth, isAdmin } = require("../controllers/authcontroller");
+const { userById } = require("../controllers/usercontroller");
 
 router.post("/create/:userId", authenticateToken, isAuth, isAdmin, create);
 router.get("/show/:categoryId", read);

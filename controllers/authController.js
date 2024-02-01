@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const { errorHandler } = require('../helpers/dbErrorHandler');
+const { errorHandler } = require('../helpers/dberrorhandler');
 const jwt = require('jsonwebtoken');
 const { expressjwt } = require('express-jwt');
 require("dotenv/config");

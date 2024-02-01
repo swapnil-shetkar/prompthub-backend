@@ -16,9 +16,9 @@ const {
     listCategories,
     listBySearch,
     listSearch,
-} = require("../controllers/productController");
-const { authenticateToken, isAuth, isAdmin } = require("../controllers/authController");
-const { userById } = require("../controllers/userController");
+} = require("../controllers/productcontroller");
+const { authenticateToken, isAuth, isAdmin } = require("../controllers/authcontroller");
+const { userById } = require("../controllers/usercontroller");
 
 //midleware
 app.use(bodyParser.urlencoded({ extended:true }));

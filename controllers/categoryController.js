@@ -1,5 +1,5 @@
 const Category = require("../models/category");
-const { errorHandler } = require("../helpers/dbErrorHandler");
+const { errorHandler } = require("../helpers/dberrorhandler");
 
 exports.create = async (req, res) => {
   try {

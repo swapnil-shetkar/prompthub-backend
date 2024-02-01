@@ -7,12 +7,12 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 //import routes
-const authRoutes = require('./routes/authRoutes')
-const userRoutes = require("./routes/userRoute");
-const categoryRoutes = require("./routes/categoryRoutes");
-const productRoutes = require("./routes/productRoutes");
-const braintreeRoutes = require("./routes/braintreeRoutes");
-const orderRoutes = require("./routes/ordersRoutes");
+const authRoutes = require('./routes/authroutes.js')
+const userRoutes = require("./routes/userroute.js");
+const categoryRoutes = require("./routes/categoryroutes.js");
+const productRoutes = require("./routes/productroutes.js");
+const braintreeRoutes = require("./routes/braintreeroutes.js");
+const orderRoutes = require("./routes/ordersroutes.js");
 //app
 const app = express();
 //db

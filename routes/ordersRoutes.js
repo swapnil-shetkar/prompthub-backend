@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-const { authenticateToken, isAuth, isAdmin } = require("../controllers/authController");
-const { userById, addOrderToUserHistory } = require("../controllers/userController");
+const { authenticateToken, isAuth, isAdmin } = require("../controllers/authcontroller");
+const { userById, addOrderToUserHistory } = require("../controllers/usercontroller");
 const {
     create,
     listOrders,
     getStatusValues,
     orderById,
     updateOrderStatus
-} = require("../controllers/orderController");
+} = require("../controllers/ordercontroller");
 // const { decreaseQuantity } = require("../controllers/productController");
 
 router.post(

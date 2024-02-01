@@ -1,5 +1,5 @@
 const { Order, CartItem } = require("../models/order");
-const { errorHandler } = require("../helpers/dbErrorHandler");
+const { errorHandler } = require("../helpers/dberrorhandler");
 
 exports.orderById = (req, res, next, id) => {
     Order.findById(id)

@@ -1,4 +1,4 @@
-const { errorHandler } = require("../helpers/dbErrorHandler");
+const { errorHandler } = require("../helpers/dberrorhandler");
 const User = require("../models/user");
 const { Order, CartItem } = require("../models/order");
 
