@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 //import routes
-const authRoutes = require('./routes/authroutes.js')
+const authRoutes = require("./routes/authroutes.js")
 const userRoutes = require("./routes/userroute.js");
 const categoryRoutes = require("./routes/categoryroutes.js");
 const productRoutes = require("./routes/productroutes.js");
