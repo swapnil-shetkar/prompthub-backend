@@ -24,6 +24,10 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
+// app.use(cors({
+//     origin: 'http://localhost:3000/',
+//     credentials: true, 
+//   }));
 
 //routes
 app.use('/auth',authRoutes);
