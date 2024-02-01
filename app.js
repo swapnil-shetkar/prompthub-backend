@@ -8,10 +8,10 @@ const cors = require('cors');
 
 //import routes
 const authRoutes = require('./routes/authRoutes')
-const userRoutes = require("./routes/userRoute.JS");
-const categoryRoutes = require("./routes/categoryRoutes.JS");
-const productRoutes = require("./routes/productRoutes.JS");
-const braintreeRoutes = require("./routes/braintreeRoutes.JS");
+const userRoutes = require("./routes/userRoute.js");
+const categoryRoutes = require("./routes/categoryRoutes");
+const productRoutes = require("./routes/productRoutes.js");
+const braintreeRoutes = require("./routes/braintreeRoutes.js");
 const orderRoutes = require("./routes/ordersRoutes");
 //app
 const app = express();
